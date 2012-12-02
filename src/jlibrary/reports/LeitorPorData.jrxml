@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LeitorPorData" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5cc93b2a-5b42-4079-840b-5c386a87c7db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATA1" class="java.lang.String"/>
+	<parameter name="DATA2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     leitor.`dataCad` AS leitor_dataCad,
+     serie.`nome` AS serie_nome,
+     leitor.`nome` AS leitor_nome,
+     turno.`nome` AS turno_nome
+FROM
+     `serie` serie INNER JOIN `leitor` leitor ON serie.`idSerie` = leitor.`idSerie`
+     AND serie.`idTurno` = leitor.`idTurno`
+     INNER JOIN `turno` turno ON serie.`idTurno` = turno.`idTurno`]]>
+	</queryString>
+	<field name="leitor_dataCad" class="java.sql.Date"/>
+	<field name="serie_nome" class="java.lang.String"/>
+	<field name="leitor_nome" class="java.lang.String"/>
+	<field name="turno_nome" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="d4d84d97-1550-454f-8303-85f2548d8265" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="e5216995-6437-4512-b616-13c701c5b00d" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Segoe UI" size="30" isBold="true"/>
+					</textElement>
+					<text><![CDATA[JLibrary]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5fba3f4f-cd75-4501-9e94-35a32bc9e5eb" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório de leitores]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="6f256d00-e422-4ef3-a7e6-b56634e353b6" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="edd81b52-4efd-4f9f-a3a1-f8dec71ce4c4" mode="Opaque" x="0" y="0" width="130" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Data de cadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="20eae53e-8e47-4f09-9d70-943756b0d11b" mode="Opaque" x="131" y="0" width="286" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63532fe3-1412-4586-b97a-9b9909a3cf5e" mode="Opaque" x="418" y="0" width="137" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Série]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="11d804b6-0089-4f09-b577-e80eaa6dbea9" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bfbbe41c-ebd7-455f-896b-2c2832e4fda1" x="0" y="0" width="130" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{leitor_dataCad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="241cf965-6d8d-4f6d-b92c-bc6d8e1c9caf" x="131" y="0" width="286" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{leitor_nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="877f726d-2db1-4b43-9536-ff6925dc2f08" x="418" y="0" width="137" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serie_nome}+" - "+$F{turno_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="c73369e0-00d5-42ba-b829-da1a3a6c79bc" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a4529d22-03d1-42f7-b2d3-d1d12e7e74a7" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="c477e4db-1e45-4142-8546-82286fac7495" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
