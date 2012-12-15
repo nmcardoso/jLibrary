@@ -1,10 +1,14 @@
-aA<p align="center">
+<p align="center">
   <img src="imgs/splash5.png" width="500px" />
 </p>
 
 <h1 align="center">jLibrary</h1>
 <h3 align="center">Sistema de gestão de bibliotecas</h3>
-<h4 align="center"><a href="TCC.pdf">TCC</a> | <a href="TCC_slides.pdf">SLIDES</a> | <a href="compiled_program.zip">PROGRAMA</a></h4>
+<h4 align="center"><a href="TCC.pdf">TCC</a> | <a href="TCC_slides.pdf">SLIDES</a> | <a href="jlibrary-compiled.zip">PROGRAMA</a></h4>
+
+<p align="center">
+  <img src="imgs/cps-logo.jpg" width="260px" />
+</p>
 
 ---
 
